@@ -28,6 +28,7 @@ void declareSO3(py::module &m)
 
     // public functions
     cls.def("matrix", &SO3d::matrix, "Returns a 3 * 3 np.ndarray");
+    cls.def("adj", &SO3d::Adj, "Returns adjoint");
     cls.def("log", &SO3d::log, "Lie algebra log");
     cls.def("inverse", &SO3d::inverse, "Inverse of a 3*3 othogonal matrix is the transpose of it");
     cls.def("copy", [](const SO3d &so3) { return SO3d(so3); }, "Return a copy of SO3");
@@ -35,5 +36,6 @@ void declareSO3(py::module &m)
     // static methods
     cls.def_static("hat", &SO3d::hat, "Hat of SO3 is to calculate the skew matrix");
     cls.def_static("exp", &SO3d::exp, "Computes the exponential map of a 3x1 so3 element");
+    //cls.def_static("adj", &SO3d::Adj, "Computes the adjoint");
 }
 } // end namespace Sophus

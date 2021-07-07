@@ -34,6 +34,7 @@ void declareSE3(py::module &m)
     cls.def("matrix3x4", &SE3d::matrix3x4, "Returns a 3 * 4 np.ndarray");
     cls.def("so3", (SO3d & (SE3d::*)()) & SE3d::so3, "Returns a SO3 rotation instance");
     cls.def("log", &SE3d::log, "Lie algebra log");
+    cls.def("adj", &SE3d::Adj, "Lie algbra adjoint");
     cls.def("inverse", &SE3d::inverse, "Inverse of a 4 * 4 matrix");
     cls.def("copy", [](SE3d const &self) { return SE3d(self); }, "Return a copy of SE3");
     cls.def("translation", (Eigen::Vector3d & (SE3d::*)()) & SE3d::translation, "translation of SE3");
